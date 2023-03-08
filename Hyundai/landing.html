@@ -1,0 +1,154 @@
+<html>
+<title>Hyundai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Ewert&family=Fanwood+Text&family=Inter:wght@100;400&family=Lato:wght@300&family=Marck+Script&family=McLaren&family=Montserrat&family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+<style>
+	body {
+		margin: 0;
+		background-color: #1e1e1e;
+		overflow: hidden;
+	}
+		
+	* {
+	  box-sizing: border-box;
+	}
+
+	body {
+	  margin: 0px;
+	  font-family: 'segoe ui';
+	}
+
+	.nav {
+		margin: 0;
+	  height: 50px;
+	  text-align: right;
+	  width: 100%;
+	  position: relative;
+		background: rgba(255, 255, 255, 0);
+		box-shadow: 0 4px 100px rgba(0, 0, 0, 0.3);
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+	}
+
+	#myVideo {
+		filter: brightness(40%);
+	  position: absolute;
+	  right: 0;
+	  bottom: 0;
+	  min-width: 100%;
+	  min-height: 100%;
+	}
+
+	ul li{
+	  display: inline-block;
+	  padding: 0 5px;
+	  color: white;
+	  line-height: 3em;
+	  margin-left: 10px;
+	  margin-right: 10px;
+	  cursor: pointer;
+	  border-bottom: 2px solid rgba(0,0,0,0);
+	  transition: all 500ms;
+	}
+	
+	ul li:hover {
+		border-bottom: 2px solid white;
+		transition: all 1s;
+	}
+	
+	#hero {
+		position: absolute;
+		width: 100%;
+		top: 20%;
+		text-align: center;
+	}
+	
+	#hero-title {
+		z-index: 10;
+		color: white;
+		font-size: 5em;
+		text-align: center;
+	}
+	
+	#hero-body {
+		margin-top: 10%;
+		color: white;
+		font-weight: 100;
+	}
+	
+	#arrow {
+		position: absolute;
+		left: calc(50% - 20px/2);
+		border-left: 2px solid white;
+		border-bottom: 2px solid white;
+		transform: rotate(-45deg);
+		width: 20px;
+		height: 20px;
+		animation: arrow 2s infinite;
+	}
+	
+	#arrow2 {
+		position: absolute;
+		margin-top: 20px;
+		left: calc(50% - 10px/2);
+		border-left: 2px solid white;
+		border-bottom: 2px solid white;
+		transform: rotate(-45deg);
+		width: 10px;
+		height: 10px;
+		animation: arrow 2s infinite;
+	}
+	
+	@keyframes arrow {
+		0% {
+			transform: rotate(-45deg) translateY(0);
+		}
+		50% {
+			transform: rotate(-45deg) translate(10px, -10px);
+		}
+		100% {
+			transform: rotate(-45deg) translateY(0px);
+		}
+	}
+</style>
+<head>
+</head>
+<body>
+	<video autoplay muted loop id="myVideo">
+		<source src="creta.mp4" type="video/mp4">
+	</video>
+	
+	<script>
+		document.getElementById("myVideo").playbackRate = "1";
+	</script>
+	
+	<div class="nav">
+		<ul>
+			<img src="logo.png"/ style="display: inline; float: left; margin-left: 50px; margin-top: 10px; height: 30px; filter: saturate(0) brightness(1000%)"/>
+		  <li>New</li>
+		  <li>Pre-owned</li>
+		  <li>Build your own</li>
+		  <li>Find a dealer</li>
+		  <li id="contact" style="margin-right: 100px">Contact</li>
+		</ul>
+	</div>
+	
+	<script>
+		document.getElementById("contact").onclick = function() {
+			
+		}
+	</script>
+	
+	<div id="contact-open">
+	
+	</div>
+	
+	<div id="hero">
+		<h1 id="hero-title">Drive into the future</h1>
+		<h2 id="hero-body">Check cars</h2>
+		<div id="arrow"></div>
+		<div id="arrow2"></div>
+	</div>
+</body>
+</html>
