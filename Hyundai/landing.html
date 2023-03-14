@@ -20,11 +20,12 @@
 	}
 
 	.nav {
+		z-index: 99;
 		margin: 0;
-	  height: 50px;
-	  text-align: right;
-	  width: 100%;
-	  position: relative;
+		height: 50px;
+		text-align: right;
+		width: 100%;
+		position: relative;
 		background: rgba(255, 255, 255, 0);
 		box-shadow: 0 4px 100px rgba(0, 0, 0, 0.3);
 		backdrop-filter: blur(5px);
@@ -56,8 +57,61 @@
 		border-bottom: 2px solid white;
 		transition: all 1s;
 	}
+
+	#dropdown {
+		display: none;
+		cursor: pointer
+	}
+
+	#dropdownpage {
+		position: absolute;
+		z-index: 999;
+		left: 0;
+		right: 0;
+		top: 50px;
+		height: 0vh;
+		background-color: white;
+		display: none;
+	}
+
+	@media only screen and (max-width: 1000px) {
+		ul li {
+			display: none;
+		}
+
+		#dropdownpage {
+			position: absolute;
+			z-index: 999;
+			left: 0;
+			right: 0;
+			display: block;
+			transition: all 2s;
+		}
+
+		#dropdown {
+			display: block;
+			float: right;
+			margin-top: 20px;
+			margin-right: 50px;
+		}
+
+		.dropdownitem {
+			margin-top: 50px;
+			color: black;
+			float:none;
+			list-style-type: none;
+			margin-right: 50px;
+			font-size: 30px;
+			letter-spacing: .5em;
+			font-family: Roboto;
+			z-index: 99;
+			transition: all 1s;
+			opacity: 0;
+		}
+	}
 	
 	#hero {
+		z-index: 0;
 		position: absolute;
 		width: 100%;
 		top: 20%;
@@ -65,7 +119,6 @@
 	}
 	
 	#hero-title {
-		z-index: 10;
 		color: white;
 		font-size: 5em;
 		text-align: center;
@@ -125,16 +178,58 @@
 	
 	<div class="nav">
 		<ul>
-			<img src="logo.png"/ style="display: inline; float: left; margin-left: 50px; margin-top: 10px; height: 30px; filter: saturate(0) brightness(1000%)"/>
-		  <li>New</li>
-		  <li>Pre-owned</li>
-		  <li>Build your own</li>
-		  <li>Find a dealer</li>
-		  <li id="contact" style="margin-right: 100px">Contact</li>
+			<img src="logo.png" style="display: inline; float: left; margin-left: 50px; margin-top: 10px; height: 30px; filter: saturate(0) brightness(1000%)"/>
+			<li>New</li>
+			<li>Pre-owned</li>
+			<li>Build your own</li>
+			<li>Find a dealer</li>
+			<li id="contact" style="margin-right: 100px">Contact</li>
 		</ul>
+		<div id="dropdown">
+			<img src="dropdown.png"/>
+			<div id="dropdownpage">
+				<li class="dropdownitem">New</li>
+				<br/>
+				<li class="dropdownitem">Pre-Owned</li>
+				<br/>
+				<li class="dropdownitem">Build your own</li>
+				<br/>
+				<li class="dropdownitem">Find a dealer</li>
+			</div>
+		</div>
 	</div>
 	
 	<script>
+		var open = false
+		document.getElementById("dropdown").onclick = function() {
+			if (open == false) {
+				open = true
+				document.getElementById("dropdownpage").style.height = "100vh";
+
+				setTimeout(function(){
+					var tags = document.getElementsByClassName("dropdownitem")
+					
+					for (let x = 0; x < tags.length; x++) {
+						tags[x].style.opacity = "1";
+					}
+				}, 1000)
+			}
+			else
+			{
+				open = false
+
+				var tags = document.getElementsByClassName("dropdownitem")
+				
+				for (let x = 0; x < tags.length; x++) {
+					tags[x].style.opacity = "0";
+				}
+
+				setTimeout(function(){
+					document.getElementById("dropdownpage").style.height = "0vh";
+				}, 1000)
+			}
+		}
+
 		document.getElementById("contact").onclick = function() {
 			
 		}
